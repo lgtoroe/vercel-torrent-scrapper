@@ -13,8 +13,8 @@ def catch_all(path):
     #     return jsonify({'results': result})
 
 
-@app.route('/gg', defaults={'path': ''})
-@app.route('/<path:path>')
+@app.route('/gg')
+@app.route('/gg/<path:path>')
 def catch_all2(path):
     result = searchRarbg("game of thrones")
     return jsonify({'results': result})
