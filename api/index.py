@@ -11,7 +11,7 @@ def catch_all(path):
         return jsonify({'results': result})
     else:
         result = "gg"
-        return Response({'results': result}, mimetype="application/json")
+        return jsonify({'results': result})
 
 
 # @app.route('/api')
