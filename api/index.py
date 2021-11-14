@@ -7,8 +7,8 @@ from utils.scrapper import searchRarbg
 app = Sanic()
 
 
-@app.route('/')
-@app.route('/<path:path>')
+# @app.route('/<path:path>')
+@app.route('/main')
 async def index(request, path=""):
     return json({'hello': path})
 
