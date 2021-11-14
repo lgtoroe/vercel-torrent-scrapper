@@ -31,9 +31,11 @@ from utils.scrapper import searchRarbg
 app = Sanic()
 
 
-@app.route('/main')
-@app.route('/main/<path:path>')
+@app.route('/')
+@app.route('/<path:path>')
 async def index(request, path=""):
+    if path == "api/search":
+        return json({"yoyo": "yay"})
     return json({'hello': path})
 
 
