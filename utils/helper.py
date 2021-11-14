@@ -1,0 +1,2 @@
+def randomString():
+    return "yoyo"
