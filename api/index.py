@@ -9,6 +9,9 @@ async def index(request, path=""):
     return json({'hello': path})
 
 
+@app.route('/abc/<path:path>')
+async def index(request, path=""):
+    return json({'hasdsad': path})
 # @app.route('/other_route')
 # @app.route('/<path:path>')
 # async def other_route(request, path=""):
