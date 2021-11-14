@@ -147,11 +147,3 @@ def getRarbgTorrentData(link):
         files.append(li.text.strip())
     data["files"] = files
     return data
-
-
-# {
-#     "routes": [{
-#         "src": "/api/(.*)",
-#         "dest": "api/index.py"
-#     }]
-# }
