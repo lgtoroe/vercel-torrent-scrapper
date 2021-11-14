@@ -1,4 +1,4 @@
-from flask import Flask, Response
+from flask import Flask, Response, jsonify
 from utils.scrapper import searchRarbg
 app = Flask(__name__)
 
@@ -8,8 +8,10 @@ app = Flask(__name__)
 def catch_all(path):
     if path == "/api/search":
         result = searchRarbg("avengers")
-        return {'results': result}
-    #  return Response("<h1>Flask</h1><p>You visited: /%s</p>" % (path), mimetype="text/html")
+        return jsonify({'results': result})
+    else:
+        result = "gg"
+        return Response({'results': result}, mimetype="application/json")
 
 
 # @app.route('/api')
