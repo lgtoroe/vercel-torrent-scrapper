@@ -35,7 +35,8 @@ app = Sanic()
 @app.route('/<path:path>')
 async def index(request, path=""):
     if path == "api/search":
-        return json({"yoyo": "yay"})
+        query = request.args.get("q")
+        return json({"yoyo": query})
     return json({'hello': path})
 
 
