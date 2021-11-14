@@ -9,11 +9,12 @@ app = Sanic()
 async def index(request, path=""):
     if path.startswith("api/rarbg"):
         handle_rarbg_route(path, request)
-    if path.startswith("api/piratebay"):
+    elif path.startswith("api/piratebay"):
         handle_piratebay_route(path, request)
-    if path.startswith("api/threesven"):
+    elif path.startswith("api/threesven"):
         handle_threesven_route(path, request)
-    return json({'message': "invalid path"}, status=404)
+    else:
+        return json({'message': "invalid path"}, status=404)
 
 
 def handle_rarbg_route(path, request):
