@@ -5,13 +5,13 @@ app = Sanic()
 
 
 # @app.route('/')
-@app.route('/test2/<path:path>')
+@app.route('/test')
 async def search(request, path=""):
     result = searchRarbg("avengers")
     return json({'results': result})
 
 
-@app.route('/test/<path:path>')
-async def search2(request, path=""):
-    result = searchRarbg("game of thrones")
-    return json({'results': result})
+# @app.route('/test/<path:path>')
+# async def search2(request, path=""):
+#     result = searchRarbg("game of thrones")
+#     return json({'results': result})
