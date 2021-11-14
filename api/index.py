@@ -4,8 +4,8 @@ from utils.scrapper import searchRarbg
 app = Sanic()
 
 
-@app.route('/')
-@app.route('/<path:path>')
+# @app.route('/')
+@app.route('/test2/<path:path>')
 async def search(request, path=""):
     result = searchRarbg("avengers")
     return json({'results': result})
