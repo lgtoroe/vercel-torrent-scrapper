@@ -8,7 +8,7 @@ app = Flask(__name__)
 def catch_all(path):
     if path == "/api/search":
         result = searchRarbg("avengers")
-        return json({'results': result})
+        return {'results': result}
     #  return Response("<h1>Flask</h1><p>You visited: /%s</p>" % (path), mimetype="text/html")
 
 
