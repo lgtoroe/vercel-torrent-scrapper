@@ -1,12 +1,11 @@
-from http.server import BaseHTTPRequestHandler
-from utils.helper import randomString
+from flask import Flask, Response
+from utils.scrapper import searchRarbg
 
 
-class handler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header('Content-type', 'text/plain')
-        self.end_headers()
-        message = randomString()
-        self.wfile.write(message.encode())
-        return
+app = Flask(__name__)
+
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
+    return {"message": "hello world"}
