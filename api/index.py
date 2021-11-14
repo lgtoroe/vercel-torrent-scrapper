@@ -1,15 +1,15 @@
-from flask import Flask, Response, jsonify
-from utils.scrapper import searchRarbg
-app = Flask(__name__)
+# from flask import Flask, Response, jsonify
+# from utils.scrapper import searchRarbg
+# app = Flask(__name__)
 
 
-@app.route('/')
-def catch_all():
-    result = searchRarbg("avengers")
-    return jsonify({'results': result})
-    # else:
-    #     result = "gg"
-    #     return jsonify({'results': result})
+# @app.route('/')
+# def catch_all():
+#     result = searchRarbg("avengers")
+#     return jsonify({'results': result})
+# else:
+#     result = "gg"
+#     return jsonify({'results': result})
 
 
 # @app.route('/gg/<path:path>')
@@ -25,21 +25,21 @@ def catch_all():
 #         return text
 
 
-# from sanic import Sanic
-# from sanic.response import json
-# from utils.scrapper import searchRarbg
-# app = Sanic()
+from sanic import Sanic
+from sanic.response import json
+from utils.scrapper import searchRarbg
+app = Sanic()
 
 
-# @app.route('/<path:path>')
-# # @app.route('/main')
-# async def index(request, path=""):
-#     return json({'hello': path})
+# @app.route('/')
+@app.route('/<path:path>')
+async def index(request, path=""):
+    return json({'hello': path})
 
 
-# @app.route('/other_route')
-# async def other_route(request, path="other_route"):
-#     return json({'whatever': path})
+@app.route('/other_route/<path:path>')
+async def other_route(request, path="other_route"):
+    return json({'whatever': path})
 
 # @app.route('/')
 # @app.route('/<path:path>')
