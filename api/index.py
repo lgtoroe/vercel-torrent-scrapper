@@ -37,9 +37,9 @@ async def index(request, path=""):
     return json({'hello': path})
 
 
-@app.route('/other_route/<path:path>')
-async def other_route(request, path="other_route"):
-    return json({'whatever': path})
+# @app.route('/other_route/<path:path>')
+# async def other_route(request, path="other_route"):
+#     return json({'whatever': path})
 
 # @app.route('/')
 # @app.route('/<path:path>')
