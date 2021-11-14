@@ -3,8 +3,8 @@ from utils.scrapper import searchRarbg
 app = Flask(__name__)
 
 
-@app.route('/gw/<path:path>')
-def catch_all(path):
+@app.route('/')
+def catch_all():
     result = searchRarbg("avengers")
     return jsonify({'results': result})
     # else:
@@ -12,10 +12,10 @@ def catch_all(path):
     #     return jsonify({'results': result})
 
 
-@app.route('/gg/<path:path>')
-def catch_all2(path):
-    result = searchRarbg("game of thrones")
-    return jsonify({'results': result})
+# @app.route('/gg/<path:path>')
+# def catch_all2(path):
+#     result = searchRarbg("game of thrones")
+#     return jsonify({'results': result})
 
 
 # @app.route('/api')
