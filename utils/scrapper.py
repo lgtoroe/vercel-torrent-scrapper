@@ -150,8 +150,8 @@ def getRarbgTorrentData(link):
 
 
 # {
-#      "routes": [{
+#     "routes": [{
 #         "src": "/api/(.*)",
 #         "dest": "api/index.py"
-#        }]
-#    }
+#     }]
+# }
