@@ -6,12 +6,11 @@ app = Flask(__name__)
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def catch_all(path):
-    if path == "/api/search":
-        result = searchRarbg("avengers")
-        return jsonify({'results': result})
-    else:
-        result = "gg"
-        return jsonify({'results': result})
+    result = searchRarbg("avengers")
+    return jsonify({'results': result})
+    # else:
+    #     result = "gg"
+    #     return jsonify({'results': result})
 
 
 # @app.route('/api')
