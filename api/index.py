@@ -136,117 +136,115 @@ CORS(app)
 @app.route('/<path:path>')
 def catch_all(path):
     if path.startswith("api/rarbg"):
-        return {'message': "no results found"}, 404
-#     if path.startswith("api/rarbg"):
-#         # handle_rarbg_route(path, request)
-#         if path.startswith("api/rarbg/search"):
-#             query = request.args.get("q")
-#             if not query:
-#                 return {'message': "empty query"}, 404
-#             result = searchRarbg(query)
-#             if not result:
-#                 return {'message': "no results found"}, 404
-#             return {"result": result}
-#         if path.startswith("api/rarbg/get"):
-#             link = request.args.get("link")
-#             if not link:
-#                 return {'message': "no link provided"}, 404
-#             result = getRarbgTorrentData(link)
-#             if not result:
-#                 return {'message': "no results found"}, 404
-#             return {"result": result}
-#     elif path.startswith("api/piratebay"):
-#         # handle_piratebay_route(path, request)
-#         if path.startswith("api/piratebay/search"):
-#             query = request.args.get("q")
-#             if not query:
-#                 return {'message': "empty query"}, 404
-#             result = searchTPB(query)
-#             if not result:
-#                 return {'message': "no results found"}, 404
-#             return {"result": result}
-#         if path.startswith("api/piratebay/get"):
-#             link = request.args.get("link")
-#             if not link:
-#                 return {'message': "no link provided"}, 404
-#             result = getTPBTorrentData(link)
-#             if not result:
-#                 return {'message': "no results found"}, 404
-#             return {"result": result}
-#     elif path.startswith("api/threesven"):
-#         # handle_threesven_route(path, request)
-#         if path.startswith("api/threesven/search"):
-#             query = request.args.get("q")
-#             if not query:
-#                 return {'message': "empty query"}, 404
-#             result = search1337x(query)
-#             if not result:
-#                 return {'message': "no results found"}, 404
-#             return {"result": result})
-#         if path.startswith("api/threesven/get"):
-#             link=request.args.get("link")
-#             if not link:
-#                 return {'message': "no link provided"}, 404
-#             result=get1337xTorrentData(link)
-#             if not result:
-#                 return {'message': "no results found"}, 404
-#             return {"result": result}
-#     else:
-#         return {'message': "invalid path"}, 404
+        # handle_rarbg_route(path, request)
+        if path.startswith("api/rarbg/search"):
+            query = request.args.get("q")
+            if not query:
+                return {'message': "empty query"}, 404
+            result = searchRarbg(query)
+            if not result:
+                return {'message': "no results found"}, 404
+            return {"result": result}
+        if path.startswith("api/rarbg/get"):
+            link = request.args.get("link")
+            if not link:
+                return {'message': "no link provided"}, 404
+            result = getRarbgTorrentData(link)
+            if not result:
+                return {'message': "no results found"}, 404
+            return {"result": result}
+    elif path.startswith("api/piratebay"):
+        # handle_piratebay_route(path, request)
+        if path.startswith("api/piratebay/search"):
+            query = request.args.get("q")
+            if not query:
+                return {'message': "empty query"}, 404
+            result = searchTPB(query)
+            if not result:
+                return {'message': "no results found"}, 404
+            return {"result": result}
+        if path.startswith("api/piratebay/get"):
+            link = request.args.get("link")
+            if not link:
+                return {'message': "no link provided"}, 404
+            result = getTPBTorrentData(link)
+            if not result:
+                return {'message': "no results found"}, 404
+            return {"result": result}
+    elif path.startswith("api/threesven"):
+        # handle_threesven_route(path, request)
+        if path.startswith("api/threesven/search"):
+            query = request.args.get("q")
+            if not query:
+                return {'message': "empty query"}, 404
+            result = search1337x(query)
+            if not result:
+                return {'message': "no results found"}, 404
+            return {"result": result})
+        if path.startswith("api/threesven/get"):
+            link=request.args.get("link")
+            if not link:
+                return {'message': "no link provided"}, 404
+            result=get1337xTorrentData(link)
+            if not result:
+                return {'message': "no results found"}, 404
+            return {"result": result}
+    else:
+        return {'message': "invalid path"}, 404
 
 
-# def handle_rarbg_route(path, request):
-#     if path.startswith("api/rarbg/search"):
-#         query=request.args.get("q")
-#         if not query:
-#             return {'message': "empty query"}, 404
-#         result=searchRarbg(query)
-#         if not result:
-#             return {'message': "no results found"}, 404
-#         return {"result": result}
-#     if path.startswith("api/rarbg/get"):
-#         link=request.args.get("link")
-#         if not link:
-#             return {'message': "no link provided"}, 404
-#         result=getRarbgTorrentData(link)
-#         if not result:
-#             return {'message': "no results found"}, 404
-#         return {"result": result}
+def handle_rarbg_route(path, request):
+    if path.startswith("api/rarbg/search"):
+        query=request.args.get("q")
+        if not query:
+            return {'message': "empty query"}, 404
+        result=searchRarbg(query)
+        if not result:
+            return {'message': "no results found"}, 404
+        return {"result": result}
+    if path.startswith("api/rarbg/get"):
+        link=request.args.get("link")
+        if not link:
+            return {'message': "no link provided"}, 404
+        result=getRarbgTorrentData(link)
+        if not result:
+            return {'message': "no results found"}, 404
+        return {"result": result}
 
 
-# def handle_piratebay_route(path, request):
-#     if path.startswith("api/piratebay/search"):
-#         query=request.args.get("q")
-#         if not query:
-#             return {'message': "empty query"}, 404
-#         result=searchTPB(query)
-#         if not result:
-#             return {'message': "no results found"}, 404
-#         return {"result": result}
-#     if path.startswith("api/piratebay/get"):
-#         link=request.args.get("link")
-#         if not link:
-#             return {'message': "no link provided"}, 404
-#         result=getTPBTorrentData(link)
-#         if not result:
-#             return {'message': "no results found"}, 404
-#         return {"result": result}
+def handle_piratebay_route(path, request):
+    if path.startswith("api/piratebay/search"):
+        query=request.args.get("q")
+        if not query:
+            return {'message': "empty query"}, 404
+        result=searchTPB(query)
+        if not result:
+            return {'message': "no results found"}, 404
+        return {"result": result}
+    if path.startswith("api/piratebay/get"):
+        link=request.args.get("link")
+        if not link:
+            return {'message': "no link provided"}, 404
+        result=getTPBTorrentData(link)
+        if not result:
+            return {'message': "no results found"}, 404
+        return {"result": result}
 
 
-# def handle_threesven_route(path, request):
-#     if path.startswith("api/threesven/search"):
-#         query=request.args.get("q")
-#         if not query:
-#             return {'message': "empty query"}, 404
-#         result=search1337x(query)
-#         if not result:
-#             return {'message': "no results found"}, 404
-#         return {"result": result}
-#     if path.startswith("api/threesven/get"):
-#         link=request.args.get("link")
-#         if not link:
-#             return {'message': "no link provided"}, 404
-#         result=get1337xTorrentData(link)
-#         if not result:
-#             return {'message': "no results found"}, 404
-#         return {"result": result}
+def handle_threesven_route(path, request):
+    if path.startswith("api/threesven/search"):
+        query=request.args.get("q")
+        if not query:
+            return {'message': "empty query"}, 404
+        result=search1337x(query)
+        if not result:
+            return {'message': "no results found"}, 404
+        return {"result": result}
+    if path.startswith("api/threesven/get"):
+        link=request.args.get("link")
+        if not link:
+            return {'message': "no link provided"}, 404
+        result=get1337xTorrentData(link)
+        if not result:
+            return {'message': "no results found"}, 404
+        return {"result": result}
