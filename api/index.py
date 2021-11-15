@@ -126,10 +126,11 @@
 #         return json({"result": result})
 
 from flask import Flask, request
-from flask_cors import CORS
+# from flask_cors import CORS
 from utils.scrapper import searchRarbg, getRarbgTorrentData, searchTPB, getTPBTorrentData, search1337x, get1337xTorrentData
 app = Flask(__name__)
-CORS(app)
+# CORS(app)
+# flask-cors == 3.0.10
 
 
 @app.route('/', defaults={'path': ''})
