@@ -181,12 +181,12 @@ def catch_all(path):
             result = search1337x(query)
             if not result:
                 return {'message': "no results found"}, 404
-            return {"result": result})
+            return {"result": result}
         if path.startswith("api/threesven/get"):
-            link=request.args.get("link")
+            link = request.args.get("link")
             if not link:
                 return {'message': "no link provided"}, 404
-            result=get1337xTorrentData(link)
+            result = get1337xTorrentData(link)
             if not result:
                 return {'message': "no results found"}, 404
             return {"result": result}
