@@ -1,6 +1,7 @@
 beautifulsoup4 ==4.10.0
 requests == 2.26.0
 lxml == 4.6.4
-sanic==19.6.0
+sanic==21.3.1
 flask==1.1.2
+sanic-plugin-toolkit>=1.2.0
 sanic-cors==1.0.1
