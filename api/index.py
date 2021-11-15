@@ -1,7 +1,10 @@
 from sanic import Sanic
 from sanic.response import json
+from utils.cors import add_cors_headers
+from utils.options import setup_options
+
 from utils.scrapper import searchRarbg, getRarbgTorrentData, searchTPB, getTPBTorrentData, search1337x, get1337xTorrentData
-app = Sanic()
+app = Sanic("app")
 
 
 @app.route('/')
@@ -120,3 +123,10 @@ def handle_threesven_route(path, request):
         if not result:
             return json({'message': "no results found"}, status=404)
         return json({"result": result})
+
+
+# Add OPTIONS handlers to any route that is missing it
+app.register_listener(setup_options, "before_server_start")
+
+# Fill in CORS headers
+app.register_middleware(add_cors_headers, "response")
