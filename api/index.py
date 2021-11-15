@@ -135,10 +135,14 @@ CORS(app)
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def catch_all(path):
-    if path.startswith("api/rarbg"):
-        # result = searchRarbg("avenger")
+    if path.startswith("api/rarbg/search"):
         query = request.args.get("q")
-        return {"result": query}
+        if not query:
+            return {'message': "empty query"}, 404
+        result = searchRarbg(query)
+        if not result:
+            return {'message': "no results found"}, 404
+        return {"result": result}
     else:
         return {"hello": "world"}
 #         # handle_rarbg_route(path, request)
