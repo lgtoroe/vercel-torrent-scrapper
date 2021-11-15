@@ -4,7 +4,7 @@ from sanic_cors import CORS, cross_origin
 
 from utils.scrapper import searchRarbg, getRarbgTorrentData, searchTPB, getTPBTorrentData, search1337x, get1337xTorrentData
 app = Sanic(__name__)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
 @app.route('/')
