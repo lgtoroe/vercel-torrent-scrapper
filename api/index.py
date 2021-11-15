@@ -9,6 +9,7 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 @app.route('/')
 @app.route('/<path:path>')
+@cross_origin(app)
 async def index(request, path=""):
     if path.startswith("api/rarbg"):
         # handle_rarbg_route(path, request)
