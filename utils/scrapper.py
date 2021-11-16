@@ -183,7 +183,7 @@ def searchNyaa(query):
         finally:
             title = data[1].text.strip()
             magnet = data[2].find("a").findNext("a")["href"]
-            size = data[3].text.strip()
+            size = data[3].text.strip().replace('i', "")
             seed = data[5].text.strip()
             leech = data[6].text.strip()
             uploader = "unknown"
