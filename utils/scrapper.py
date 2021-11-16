@@ -186,7 +186,6 @@ def searchNyaa(query):
             size = data[3].text.strip()
             seed = data[5].text.strip()
             leech = data[6].text.strip()
-            file = "https://nyaa.si" + data[2].find("a")["href"]
             uploader = "unknown"
             anime_list.append({"name": title, "link": magnet, "size": size,
                                "seeds": seed, "leeches": leech, "uploader": uploader, "file": file})
