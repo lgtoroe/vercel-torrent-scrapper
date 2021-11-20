@@ -51,7 +51,8 @@ def search1337x(search_key):
             "leeches": toInt(tr.select("td.coll-3")[0].text),
             "size": str(tr.select("td.coll-4")[0].text).split('B', 1)[0] + "B",
             "uploader": tr.select("td.coll-5 > a")[0].text,
-            "link": f"http://1337xx.to{a['href']}"
+            "link": f"http://1337xx.to{a['href']}",
+            "provider": "1337"
         })
     return torrents
 
@@ -85,7 +86,8 @@ def searchTPB(search_key):
             "leeches": toInt(t["leechers"]),
             "size": convertBytes(int(t["size"])),
             "uploader": t["username"],
-            "link": f"http://apibay.org/t.php?id={t['id']}"
+            "link": f"http://apibay.org/t.php?id={t['id']}",
+            "provider": "piratebay"
         })
     return torrents
 
@@ -132,7 +134,8 @@ def searchRarbg(search_key):
             "leeches": toInt(tds[6].text),
             "size": tds[4].text,
             "uploader": tds[7].text,
-            "link": f"http://rargb.to{tds[1].a['href']}"
+            "link": f"http://rargb.to{tds[1].a['href']}",
+            "provider": "rarbg"
         })
     return torrents
 

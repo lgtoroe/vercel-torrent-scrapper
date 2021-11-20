@@ -45,9 +45,9 @@ def catch_all(path):
             if not result:
                 return {'message': "no results found"}, 404
             return {"result": result}
-    elif path.startswith("api/threesven"):
+    elif path.startswith("api/1337"):
         # handle_threesven_route(path, request)
-        if path.startswith("api/threesven/search"):
+        if path.startswith("api/1337/search"):
             query = request.args.get("q")
             if not query:
                 return {'message': "empty query"}, 404
@@ -55,7 +55,7 @@ def catch_all(path):
             if not result:
                 return {'message': "no results found"}, 404
             return {"result": result}
-        if path.startswith("api/threesven/get"):
+        if path.startswith("api/1337/get"):
             link = request.args.get("link")
             if not link:
                 return {'message': "no link provided"}, 404
