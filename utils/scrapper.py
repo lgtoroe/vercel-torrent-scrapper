@@ -114,7 +114,7 @@ def searchTPB(search_key):
             "seeds": toInt(t["seeders"]),
             "leeches": toInt(t["leechers"]),
             "size": convertBytes(int(t["size"])),
-            "added": t["added"],
+            "added": int(t["added"]),
             "uploader": t["username"],
             "link": f"http://apibay.org/t.php?id={t['id']}",
             "provider": "piratebay"
