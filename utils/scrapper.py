@@ -1,6 +1,34 @@
 import requests
 from bs4 import BeautifulSoup
 from requests.exceptions import Timeout
+from datetime import datetime
+
+
+def convertDateToTimestamp(value):
+    dt = datetime.strptime(value, "%Y-%m-%d %H:%M")
+    return int(dt.timestamp())
+
+
+def convertStrToDate(Str):
+    monthNo = {
+        "Jan": "01",
+        "Feb": "02",
+        "Mar": "03",
+        "Apr": "04",
+        "May": "05",
+        "Jun": "06",
+        "Jul": "07",
+        "Aug": "08",
+        "Sep": "09",
+        "Oct": "10",
+        "Nov": "11",
+        "Dec": "12"
+    }
+    month = monthNo[Str.split()[0][:-1]]
+    day = Str.split()[1][:-2]
+    year = "20"+Str.split()[2][1:]
+    date = f"{year}-{month}-{day} 00:00"
+    return date
 
 
 def toInt(value):
@@ -50,6 +78,7 @@ def search1337x(search_key):
             "seeds": toInt(tr.select("td.coll-2")[0].text),
             "leeches": toInt(tr.select("td.coll-3")[0].text),
             "size": str(tr.select("td.coll-4")[0].text).split('B', 1)[0] + "B",
+            "added": convertDateToTimestamp(convertStrToDate(tr.select("td.coll-date")[0].text)),
             "uploader": tr.select("td.coll-5 > a")[0].text,
             "link": f"http://1337xx.to{a['href']}",
             "provider": "1337"
@@ -85,6 +114,7 @@ def searchTPB(search_key):
             "seeds": toInt(t["seeders"]),
             "leeches": toInt(t["leechers"]),
             "size": convertBytes(int(t["size"])),
+            "added": t["added"],
             "uploader": t["username"],
             "link": f"http://apibay.org/t.php?id={t['id']}",
             "provider": "piratebay"
@@ -133,6 +163,7 @@ def searchRarbg(search_key):
             "seeds": toInt(tds[5].font.text),
             "leeches": toInt(tds[6].text),
             "size": tds[4].text,
+            "added": convertDateToTimestamp(tds[3].text[:-3]),
             "uploader": tds[7].text,
             "link": f"http://rargb.to{tds[1].a['href']}",
             "provider": "rarbg"
@@ -187,9 +218,10 @@ def searchNyaa(query):
             title = data[1].text.strip()
             magnet = data[2].find("a").findNext("a")["href"]
             size = data[3].text.strip().replace('i', "")
+            added = convertDateToTimestamp(data[4].text.strip())
             seed = data[5].text.strip()
             leech = data[6].text.strip()
             uploader = "unknown"
             anime_list.append({"name": title, "link": magnet, "size": size,
-                               "seeds": seed, "leeches": leech, "uploader": uploader})
+                               "seeds": seed, "leeches": leech, "added": added, "uploader": uploader})
     return anime_list
